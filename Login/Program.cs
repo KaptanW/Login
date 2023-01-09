@@ -17,6 +17,7 @@ namespace Login
             string registered;
             string enteredusername;
             string enteredpassword;
+            int wronglogin = 0;
 
 
             Console.WriteLine("Are you registered: Y/N");
@@ -63,10 +64,28 @@ namespace Login
                 {
                     Console.WriteLine("You are succesfully loged in");
                 }
+                else if (wronglogin == 3)
+                    {
+                    Console.WriteLine("Do you want to change your password");
+                    registered = Console.ReadLine();
+                    if (registered.Equals("N"))
+                    {
+                        isRegistered = true;
+                        Login();
+                    }
+                    else
+                    {
+                        isRegistered = false;
+                        Register();
+                    }
+
+                }
                 else
                 {
                     Console.WriteLine("Username or password is not correct");
+                    wronglogin++;
                     Login();
+
                 }
             }
             
